@@ -7,12 +7,23 @@ var panelFunctions = {
     $("#currentTime").text( moment().format('HH:mm') );
   },
 
-  setCurrentWeather: function(){
+  getUserLocation: function(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition( panelFunctions.setCurrentWeather, panelFunctions.setUnavailableLocation );
+    } else {
+      $("#weaterContent").text("Geolocation is not supported by this browser.");
+    }
+  },
+
+  setUnavailableLocation: function(){
+    $("#weaterContent").text("Weather info unavailable. Your geolocation is not available.");
+  },
+
+  setCurrentWeather: function(position){
     var OPEN_WEATHER_MAP_URL = 'https://api.openweathermap.org/data/2.5/weather?lang=pt&units=metric';
-    var FORTALEZA_WEATHER_API_ID = 3399415;
     var OPEN_WEATHER_MAP_KEY = 'f1800d4df056f6d2e3029e788312b2e6';
 
-    $.get( OPEN_WEATHER_MAP_URL + '&id=' + FORTALEZA_WEATHER_API_ID + '&APPID=' + OPEN_WEATHER_MAP_KEY, function( data ) {
+    $.get( OPEN_WEATHER_MAP_URL + '&lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&APPID=' + OPEN_WEATHER_MAP_KEY, function( data ) {
       $("#minTemp").text( data.main.temp_min );
       $("#maxTemp").text( data.main.temp_max );
       var weatherIdSplit = data.weather[0].id.toString().match(/\d/g);
@@ -117,7 +128,7 @@ $( document ).ready(function() {
   panelFunctions.configVideoForChrome();
   panelFunctions.setCurrentDate();
   panelFunctions.setCurrentTime();
-  panelFunctions.setCurrentWeather();
+  panelFunctions.getUserLocation();
   panelFunctions.handleCarouselTransition();
 
   setInterval(function(){
