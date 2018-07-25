@@ -14,8 +14,13 @@
         bottom: 0;
       }
 
-      #mediaCarousel img, #mediaCarousel video{
+      #mediaCarousel img{
         height: 100vh;
+      }
+
+      #mediaCarousel video{
+        height: 100vh;
+        object-fit: cover;
       }
     </style>
   </head>
@@ -28,7 +33,7 @@
         </div>
         <div class="carousel-item">
           <video class="d-block w-100">
-            <source src="videos/big_buck_bunny.mp4" type="video/mp4">
+            <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
              Your browser does not support the video tag.
           </video>
         </div>
