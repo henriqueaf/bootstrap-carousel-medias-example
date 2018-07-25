@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head dir="ltr" lang="pt-BR">
+    <title>.:: Bootstrap Carousel Example ::.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/weather-icons.min.css">
+    <link rel="stylesheet" href="css/weather-icons-wind.min.css">
+
+    <style>
+      #panel-footer{
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.6);
+        bottom: 0;
+      }
+
+      #mediaCarousel img, #mediaCarousel video{
+        height: 100vh;
+      }
+    </style>
+  </head>
+
+  <body id="panel-body">
+    <div id="mediaCarousel" class="carousel slide" data-ride="carousel" data-pause="false" data-interval="5000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="images/cabana-rio.jpg">
+        </div>
+        <div class="carousel-item">
+          <video class="d-block w-100">
+            <source src="videos/big_buck_bunny.mp4" type="video/mp4">
+             Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="images/forrest.jpg">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="images/moto.jpg">
+        </div>
+
+        <div id="panel-footer" class="container-fluid p-3">
+          <div class="row align-items-center text-white">
+            <div class="col-sm-1 h3 m-0" id="currentTime">
+            </div>
+            <div class="col-sm-1 h5 m-0" id="currentDate">
+            </div>
+            <div class="col-sm-2 h5 m-0">
+              <i id="weatherIcon"></i>
+              <font id="minTemp">-</font>º/<font id="maxTemp">-</font>º
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js" /></script>
+    <script src="js/moment-with-locales.js" /></script>
+    <script type="text/javascript" src="js/panel.js" /></script>
+  </body>
+</html>
