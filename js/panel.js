@@ -83,12 +83,38 @@ var panelFunctions = {
         $mediaCarousel.carousel('next');
       };
     }
+  },
+
+  configVideoForChrome: function(){
+    var isChromium = window.chrome;
+    var winNav = window.navigator;
+    var vendorName = winNav.vendor;
+    var isOpera = typeof window.opr !== "undefined";
+    var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
+    var isIOSChrome = winNav.userAgent.match("CriOS");
+
+    if(
+      isChromium !== null &&
+      typeof isChromium !== "undefined" &&
+      vendorName === "Google Inc." &&
+      isOpera === false &&
+      isIEedge === false
+    ) {
+      // is Google Chrome
+      var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
+      var chromeVersion = raw ? parseInt(raw[2], 10) : false;
+
+      if(chromeVersion && chromeVersion >= 66){
+        $("video").prop("muted", "muted");
+      }
+    };
   }
 }
 
 $( document ).ready(function() {
   moment.locale('en');
 
+  panelFunctions.configVideoForChrome();
   panelFunctions.setCurrentDate();
   panelFunctions.setCurrentTime();
   panelFunctions.setCurrentWeather();
