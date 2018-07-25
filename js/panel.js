@@ -8,7 +8,7 @@ var panelFunctions = {
   },
 
   setCurrentWeather: function(){
-    var OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/weather?lang=pt&units=metric';
+    var OPEN_WEATHER_MAP_URL = 'https://api.openweathermap.org/data/2.5/weather?lang=pt&units=metric';
     var FORTALEZA_WEATHER_API_ID = 3399415;
     var OPEN_WEATHER_MAP_KEY = 'f1800d4df056f6d2e3029e788312b2e6';
 
